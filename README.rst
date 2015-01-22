@@ -36,7 +36,7 @@ Indicate file name::
 Something Interesting
 ---------------------
 
-This is an afternoon-tea project that was accomplished in one and a half hours,
+This is an afternoon-tea project which was accomplished in one and a half hours,
 from ``Jan 22 14:25:18 2015`` to ``Jan 22 15:45:52 2015``, could be seen as
 some sort of effective developing, and remind me of this fantastic `video
 <http://youtu.be/E1oZhEIrer4>`_, hope one day I can achieve that :)
