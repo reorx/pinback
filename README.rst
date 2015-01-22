@@ -1,7 +1,7 @@
 Pinback - Pinboard Backup Tool
 ==============================
 
-This is cli program for backuping pinboard bookmarks,
+This is a CLI program for backuping pinboard bookmarks,
 with a neat API class implemented.
 
 
