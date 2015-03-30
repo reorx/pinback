@@ -83,7 +83,7 @@ def main():
             token = f.read()
     except IOError:
         print ('Error: please write your pinboard api token to'
-               'file ".token" in current directory')
+               ' file ".token" in current directory')
         sys.exit(1)
 
     try:
