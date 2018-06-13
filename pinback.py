@@ -36,9 +36,9 @@ class API(object):
 
         requester = getattr(requests, method)
         url = self.get_url(uri)
-        print '[REQUEST] %s %s' % (requester.__name__, uri)
+        print('[REQUEST] {} {}'.format(requester.__name__, uri))
         resp = requester(url)
-        return resp.content
+        return resp
 
 
 class ResourcePath(object):
@@ -72,9 +72,10 @@ def save_to_file(body, filename=None):
         filename = 'pinboard-backup-%s.xml' %\
             datetime.datetime.now().strftime('%Y-%m-%d')
 
-    print 'Write %s bytes to file %s' % (len(body), filename)
-    with open(filename, 'w') as f:
+    print('Write {} bytes to file {}'.format(len(body), filename))
+    with open(filename, 'wb') as f:
         f.write(body)
+    return filename
 
 
 def main():
@@ -82,7 +83,7 @@ def main():
         with open('.token', 'r') as f:
             token = f.read()
     except IOError:
-        print ('Error: please write your pinboard api token to'
+        print('Error: please write your pinboard api token to'
                ' file ".token" in current directory')
         sys.exit(1)
 
@@ -92,8 +93,10 @@ def main():
         filename = None
 
     api = API(token)
-    body = api.posts.all(raw=True)
-    save_to_file(body, filename)
+    resp = api.posts.all(raw=True)
+    if resp.status_code != 200:
+        raise ValueError('request failed, status_code={} body={}'.format(resp.status_code, resp.content))
+    save_to_file(resp.content, filename)
 
 
 if __name__ == '__main__':
